@@ -16,7 +16,7 @@ var hostsWOpenService []nmap.Host
 var (
 	nmapFile = flag.String("in", "", "an nmap xml file that you want to parse")
 	outFile  = flag.String("outfile", "", "unless specified, will be nmapFileName_proto_IPs.txt")
-	proto    = flag.String("proto", "", "a protocol go-netscan supports: ldap, vnc, smb(microsoft-ds), ssh, winrm")
+	proto    = flag.String("proto", "", "a protocol go-netscan supports: ldap, vnc, smb(microsoft-ds), ssh, winrm, ftp, smtp")
 )
 
 func main() {
@@ -29,7 +29,7 @@ func main() {
 		os.Exit(1)
 	}
 	if *proto == "" {
-		log.Println("Please specify a protocol: -proto {ldap, vnc, smb, ssh, winrm}")
+		log.Println("Please specify a protocol: -proto {ldap, vnc, smb, ssh, winrm, ftp, smtp}")
 		os.Exit(1)
 	}
 	log.Println(*nmapFile)
