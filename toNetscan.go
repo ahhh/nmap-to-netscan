@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 
 	"github.com/Ullaakut/nmap"
@@ -75,7 +76,8 @@ func ParseNmapService(filepath, protoc string) ([]string, error) {
 				hostsWOpenService = append(hostsWOpenService, singHost)
 				// get addresses for these hosts
 				for _, singAddress := range singHost.Addresses {
-					targets = append(targets, singAddress.Addr)
+					fullAddr := singAddress.Addr + ":" + strconv.Itoa(int(sp.ID))
+					targets = append(targets, fullAddr)
 				}
 			}
 		}
